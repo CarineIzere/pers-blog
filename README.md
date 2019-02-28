@@ -1,88 +1,71 @@
-# APP NAME
+# pitches
 
-    One Minute Pitch
+## Author: Carine Izere
 
-# AUTHOR
+## Description
 
-    Iyerikuzwe Regine
+        Pitches is a web application that allows users to use that one minute wisely. The users will submit their one minute pitches and other users will vote on them and leave comments to give their feedback on them. The pitches are organized by category. You can have different categories like pickup lines, interview pitch , product pitch, promotion pitch.
 
-# DESCRIPTION
+## View Live Site here
 
-    This is an app that allows users to create,submit,vote pitches based on categories
+        To use this application, visit the live application link at:
+        https://newshighlightc.herokuapp.com/
 
-#### Pitch Categories
+## User Requirements
 
-    * pickup lines
-    * interview pitches
-    * product pitches
-    * promotion pitches
+        user should see the pitches other people have posted.
+        user should vote on the pitch they liked and give it a downvote or upvote.
+        user should comment on the different pitches and leave feedback.
+        user should submit a pitch in any category.
+        user should view the different categories.
 
-#### User Stories
+## Features
 
+        Create and display pitches based on categories
+        Create category for pitches
+        Display trending pitches based on day, week, month, year.
+        Display the latest pitches and comments.
+        Create user accounts with roles
+        Send email verification to users with secret token that expires after sometime
+        Send email to admin user when a new user signs up.
+        Generate gravatars
+        Editing user profiles
+        Admin and moderator user with admin roles : create/delete/edit pitches topics, other users pitches and user's roles.
+        User's messaging capability
+        Show user's with the most pitches upvotes
+        Multiple language support using flask-babel
 
-    * A users can see pitches that other people have posted
-    * A user can vote on posted pitches with either a down or an up vote
-    * A user can comment on different pitches and leave feedback
-    * A user can submit a pitch in any category
-    * A user can submit to different categories
+## Specifications
 
+### Setup & Requirements
 
-## Prerequisites
-    * Python3.6
+        Clone the repository
+        install all the requirements in the file > requirements.txt
+        open terminal and go to the project folder, run \$ ./start.sh
 
-## Installation steps 
-* $ git clone https://github.com/iyerikuzwe/One-minute-s-pitch
-* $ cd One-Minute-Pitch
-* $ source virtual/bin/activate
-* Inside the manage.py module change the config_name parameter from 'production' to 'development' ie app = create_app('production') should be app = create_app('development')
-* $ ./start.sh 
+# first initialize the database if the migrations folder does not exist
 
-# How it works
+        python manage.py db init
 
-    * A user needs to sign up
-    * A user the needs to sign in order to create,vote and post pitches
+# create a migration
 
-# CREDITS
+        python manage.py db migrate -m "initial migration"
 
-    Moringa School, StackOverflow.com and W3 schools
+# upgrade
 
-# Technologies Used
-This project uses major technologies which are :
-    * HTML/CSS 
-    * Bootstrap 
-    * Python3.6
-    * flask
+        python manage.py db upgrade
 
+### Cloning
 
-# Support and Contacts
+        \_In your terminal:
 
-    * In case You have any issues using this code please do no hesitate to get in touch with me through iyerikuzweregine19@gmail.com
-    * or leave a commit here on github.
-    * or use 0789140216
-# License
+        \_\$ git clone https://github.com/CarineIzere/Pitch.
 
-    * MIT License
+        \*\$ cd Pitch
 
-    Copyright (c) 2019 Iyerikuzwe Regine
+## Technologies used
 
-
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.*
-
-    Copyright (c) 2019 ** [Iyerikuzwe Regine](https://iyerikuzwe.github.io/ "Github Portfolio") ** 
+        - Python 3.6
+        - Flask Framework
+        - HTML, CSS and Bootstrap
+        - JavaScript
