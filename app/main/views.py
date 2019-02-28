@@ -191,4 +191,3 @@ def test(id):
     '''
     pitch =Pitch.query.filter_by(id=1).first()
     return render_template('test.html',pitch= pitch)
-
