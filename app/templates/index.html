@@ -36,25 +36,25 @@
                     </a>
                     <br>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-            <div class="panel style="style="border: 20px solid #f2f2f2; padding:20px; margin-top:10px; background-color: brown;">
+        <div class="well">
+            <div class="panel style="style="border: 20px solid #f2f2f2; padding:20px; margin-top:10px; background-color: rgb(240, 74, 74);">
                 <p style="font-family: 'Bellefair', serif; font-size:20px;"><em>Pitches is a web application that allows users to use that one minute wisely. The users will submit their one minute pitches and other users will vote on them and leave comments to give their feedback on them. The pitches are organized by category. You can have different categories like pickup lines, interview pitch , product pitch, promotion pitch. So Write your one minute in any of the categories to the left and let other user vote and comment on it.Please also feel free to comment and vote on pitches posted by other people </em></p>
                 
                 <div style="text-align:center;">
                     <a href="{{url_for('main.new_pitch')}}">
                         <br>
-        </div>               
+                              
                         <span >Add a new Pitch here</span>
                     </a>
-
                 </div>
-            
             </div>
+            
+        </div>
             
         
     </hr>
-        <div class="all-pitches">
-            <span style="color:gainsboro;">All pitches are displayed below</span>
+        <div class="well" style="border: 20px solid #f2f2f2; padding:20px; margin-top:10px; background-color: rgb(240, 74, 74);">
+            <span >These are All pitches  displayed below</span>
                 <hr> 
                 {{macro.displayPitches(pitches)}}
             
