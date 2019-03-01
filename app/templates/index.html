@@ -3,47 +3,37 @@
 
 {% block styles%}
 {{ super() }}
+<!-- Bootstrap -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Akronim|Bellefair|Joti+One" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
     <div class="container" style="background-color: cadetblue; padding:20px; margin-top:0px; padding-top:40px; padding-bottom:400px; ">
         <div class="row" style="text-align:center; font-size:30px;">
-            <span style="font-size:40px; font-family: 'Akronim', cursive;"> PITCH </span>
+            <span style="color:brown; size: 30px"> PITCH </span>
         </div>
         
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >  
-                <button
-                type="button"style="size:50px;"
-                ><a href="{{url_for('main.interview')}}" style="color:brown; font-size:15px; ">
+        <div class="well well-sm" >  
+                <a href="{{url_for('main.interview')}}" style="color:brown; size:15px; ">
                         <br>
                         <em>Inteview   Pitches</em>
-                    </a>
-                </button>  
+                    </a> 
                     <br>
-                <button
-                type="button"style="size:50px;">
-                    <a href="{{url_for('main.pick_up_line')}}" style="color:brown; font-size:15px;">
+                    <a href="{{url_for('main.pick_up_line')}}" style="color:brown; size:15px;">
                         <br>
                     <em>Pick  Up  Lines</em>
                     </a>
-                </button>
                     <br>
-                <button
-                type="button"style="size:50px;">
-                    <a href="{{url_for('main.promotion')}}" style="color:brown; font-size:15px;">
+                    <a href="{{url_for('main.promotion')}}" style="color:brown; size:15px;">
                         <br>
                     <em>Promotion Pitches</em>
                     </a>
-                </button>
-                    <br>
-                <button
-                    type="button"style="size:50px;"> 
-                    <a href="{{url_for('main.product')}}" style="color:brown; font-size:15px;">
+                    <br> 
+                    <a href="{{url_for('main.product')}}" style="color:brown; size:15px;">
                         <br>
                     <em>Product   Pitches</em>
                     </a>
-                </button>
                     <br>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">

@@ -59,7 +59,7 @@
 
         \_In your terminal:
 
-        \_\$ git clone https://github.com/CarineIzere/Pitch.
+        \_\$ git clone https://github.com/CarineIzere/pitches.
 
         \*\$ cd Pitch
 
@@ -69,3 +69,29 @@
         - Flask Framework
         - HTML, CSS and Bootstrap
         - JavaScript
+        - Git
+        - Postgres db
+
+## License
+
+      [![License: MIT]
+
+## copyright
+
+      ©2019 [Carine Izere]
+
+## Support and contact details
+
+      tel:+250783706421 E_mail : carizeree@gmail.com
+
+## Bugs
+
+      No bugs have been identified as far but incase of any contact author
+
+## Contribution
+
+      pull requests are encouraged
+
+## Acknowledge
+
+      It will be a great pressure for anyone will use my code.
