@@ -1,142 +1,89 @@
-from . import db 
+# from builtins import classmethod
 from werkzeug.security import generate_password_hash,check_password_hash
+from . import db
 from flask_login import UserMixin
 from . import login_manager
-from datetime import datetime 
-
-
+from datetime import datetime
+from time import time
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class User(UserMixin, db.Model):
+
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
+
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255),index = True) 
-    email = db.Column(db.String(255),unique = True,index = True)
-    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
-    bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
-    password_hash = db.Column(db.String(255))
-    pass_secure = db.Column(db.String(255))
-    pitch = db.relationship('Pitch',backref = 'users',lazy="dynamic")
+    username = db.Column(db.String(40),unique = True, index=True)
+    hash_pass = db.Column(db.String(255))
+    email = db.Column(db.String(255),unique = True, index = True)
 
-    def save_comment(self):
-        db.session.add(self)
-        db.session.commit()
-
-    @classmethod
-    def get_comments(cls,id):
-        reviews = Comment.query.filter_by(pitch_id=id).all()
-        return comments
+    pitches = db.relationship('BLOG',backref='user',lazy='dynamic')
 
     @property
     def password(self):
-        raise AttributeError('You cannot read the password attribute')
+        raise AttributeError("You cannot read password attribute")
 
     @password.setter
-    def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+    def password(self,password):
+        self.hash_pass = generate_password_hash(password)
+
+    def set_password(self,password):
+        self.hash_pass = generate_password_hash(password)
 
     def verify_password(self,password):
-            return check_password_hash(self.pass_secure, password)
+        return check_password_hash(self.hash_pass,password)
 
     def __repr__(self):
         return f'User {self.username}'
 
-class Pitch(db.Model):
-    '''
-    Pitch class to define Pitch Objects
-    '''
-    __tablename__ = 'pitch'
+class BLOG(db.Model):
+    __tablename__ = 'm_blog'
 
     id = db.Column(db.Integer,primary_key = True)
-    pitch = db.Column(db.String)
-    category_id = db.Column(db.Integer)
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
-        
+    m_blog_title = db.Column(db.String())
+    m_blog_content = db.Column(db.String())
+    m_blog_posted_on =  db.Column(db.DateTime, nullable=False, default = datetime.utcnow)
+    m_user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
-    def save_pitch(self):
-        '''
-        Function that saves pitches
-        '''
+    def save_blog(self):
         db.session.add(self)
         db.session.commit()
-    
-    @classmethod
-    def get_all_pitches(cls):
-        '''
-        Function that queries the databse and returns all the pitches
-        '''
-        return Pitch.query.all()
 
     @classmethod
-    def get_pitches_by_category(cls,cat_id):
-        '''
-        Function that queries the databse and returns pitches based on the
-        category passed to it
-        '''
-        return Pitch.query.filter_by(category_id= cat_id)
+    def get_blog(cls,id):
+        blogs = BLOG.query.filter_by(id=id).all()
+        return blogs
 
-
-
+    @classmethod
+    def get_all_blogs(cls):
+        blogs = BLOG.query.order_by('-id').all()
+        return blogs
 
 class Comment(db.Model):
+    __tablename__='comments'
 
-    __tablename__ = 'comments'
-
-    id = db.Column(db.Integer,primary_key = True)
-    comment= db.Column(db.String)
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
-    username =  db.Column(db.String)
-    votes= db.Column(db.Integer)
-    
+    id = db.Column(db.Integer,primary_key=True)
+    c_content = db.Column(db.String())
+    c_blog_id = db.Column(db.Integer)
+    c_com_posted_on =  db.Column(db.DateTime, nullable=False, default = datetime.utcnow)
 
     def save_comment(self):
-        '''
-        Function that saves comments
-        '''
         db.session.add(self)
         db.session.commit()
-
-    @classmethod
-    def clear_comments(cls):
-        Comment.all_comments.clear()
 
     @classmethod
     def get_comments(cls,id):
-        comments = Comment.query.filter_by(pitch_id=id).all()
-
+        comments = Comment.query.filter_by(c_blog_id=id).all()
         return comments
 
-class Role(db.Model):
-    __tablename__ = 'roles'
+class Subscribe(db.Model):
+    __tablename__ = 'subscribe'
 
     id = db.Column(db.Integer,primary_key = True)
-    name = db.Column(db.String(255))
-    users = db.relationship('User',backref = 'role',lazy="dynamic") 
+    s_email = db.Column(db.String(255),unique = True, index = True)
 
-    def __repr__(self):
-        return f'User {self.name}'  
-
-
-class PitchCategory(db.Model):
-    '''
-    Function that defines different categories of pitches
-    '''
-    __tablename__ ='pitch_categories'
-
-
-    id = db.Column(db.Integer, primary_key=True)
-    name_of_category = db.Column(db.String(255))
-    category_description = db.Column(db.String(255))
-
-    @classmethod
-    def get_categories(cls):
-        '''
-        This function fetches all the categories from the database
-        '''
-        categories = PitchCategory.query.all()
-        return categories
+    def save_email(self):
+        db.session.add(self)
+        db.session.commit()

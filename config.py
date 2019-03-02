@@ -1,11 +1,13 @@
 import os
 
-class Config:
 
-    
+class Config:
+    """
+    General configuration parent class
+    """
+    MOVIE_API_BASE_URL = 'https://api.themoviedb.org/3/movie/{}?api_key={}'
     MOVIE_API_KEY = os.environ.get('MOVIE_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:caca1@localhost/pitches'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST ='app/static/photos'
 
@@ -15,23 +17,47 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-    SUBJECT_PREFIX = 'my project '
-    SENDER_EMAIL = 'carizeree@gmail.com'
 
-    @staticmethod
-    def init_app(app):
-        pass
+    # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:caca1@localhost/pitches'
+    """
+    Production  configuration child class
+    Args:
+        Config: The parent configuration class with General configuration settings
+    """
+
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     pass
 
 
 class DevConfig(Config):
+    """
+    Development  configuration child class
+    Args:
+        Config: The parent configuration class with General configuration settings
+    """
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francs:master@localhost/blog'
     DEBUG = True
 
+
+class TestConfig(Config):
+    """
+    Development  configuration child class
+    Args:
+        Config: The parent configuration class with General configuration settings
+    """
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francs:master@localhost/blog_test'
+    DEBUG = True
+
+
 config_options = {
-'development':DevConfig,
-'production':ProdConfig
+    'development': DevConfig,
+    'production': ProdConfig,
+    'test': TestConfig
 }

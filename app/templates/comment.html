@@ -1,16 +1,29 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% import 'macros.html' as macro %}
 
-{% block content%}
-<div class="container-fluid">
-
+{% block content %}
+<div class="container">
   <div class="row">
-    <div class="col-sm-4">
-      <img src="{{comment.image_path}}" class="img-responsive">
-    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8 comments">
+      <h4>
+        <a href="/user/{{pitch.user.username}}&{{pitch.user.id}}">{{pitch.user.username|capitalize}}</a>
+      </h4>
+      <p class="pitch-content">{{pitch.m_blog_content}}</p>
+      <hr>
+      {{wtf.quick_form(comment_form)}}
+      <!-- {{simplemde.load}} -->
+      <ul class="list-inline">
 
-    <div class="col-sm-8">
-      {{format_comment|safe}}
+      </ul>
+      <ul class="list-inline">
+
+      </ul>
+      {{macro.displayComments(comments)}}
     </div>
+    <hr>
+    <div class="col-md-2"></div>
   </div>
 </div>
-{%endblock%}
+{% endblock %}

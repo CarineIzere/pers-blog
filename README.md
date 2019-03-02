@@ -1,97 +1,60 @@
-# pitches
-
-## Author: Carine Izere
+## Blog
+## Blog is a web application that allows users / writers to view and comment on blogs posted.
+### 15 February 2019
+#### By **[Carine Izere]**
 
 ## Description
-
-        Pitches is a web application that allows users to use that one minute wisely. The users will submit their one minute pitches and other users will vote on them and leave comments to give their feedback on them. The pitches are organized by category. You can have different categories like pickup lines, interview pitch , product pitch, promotion pitch.
-
-## View Live Site here
-
-        To use this application, visit the live application link at:
-        https://newshighlightc.herokuapp.com/
-
-## User Requirements
-
-        user should see the pitches other people have posted.
-        user should vote on the pitch they liked and give it a downvote or upvote.
-        user should comment on the different pitches and leave feedback.
-        user should submit a pitch in any category.
-        user should view the different categories.
-
-## Features
-
-        Create and display pitches based on categories
-        Create category for pitches
-        Display trending pitches based on day, week, month, year.
-        Display the latest pitches and comments.
-        Create user accounts with roles
-        Send email verification to users with secret token that expires after sometime
-        Send email to admin user when a new user signs up.
-        Generate gravatars
-        Editing user profiles
-        Admin and moderator user with admin roles : create/delete/edit pitches topics, other users pitches and user's roles.
-        User's messaging capability
-        Show user's with the most pitches upvotes
-        Multiple language support using flask-babel
+Blog is a web application that provides a platform for the user to comment on blogs posted and allows writers the opportunity to create blogs.
 
 ## Specifications
+### Who is the target User?
+* Anyone who wants to review, share , comment and advice the public.
 
-### Setup & Requirements
+### Front-end/User Interface Logic Objectives
+* By default the page will load and provide two options and a sign up option.
+* Post a Blog: This section will be used by writers who want to post a blog. You will be required to login to access this section.
+* Read a Blog: This section will be used by users who want to comment on blogs.
+* Sign In: This is the section to be used for signing in or creating new members.
 
-        Clone the repository
-        install all the requirements in the file > requirements.txt
-        open terminal and go to the project folder, run \$ ./start.sh
+### Back-end/Business logic Objectives
+* The application is using a postgres database to store data.
+* Once a user is created he / she can sign in and post or comment on available posts.
 
-# first initialize the database if the migrations folder does not exist
+### Behaviour-Driven Development
+| Behavior            | Input                         | Output                        |
+| ------------------- | ----------------------------- | ----------------------------- |
+| View Home | Click on the Blog | Loads the home page. |
+| View Post a Blog | Click on Post a Blog | Validation helps to check if you are logged in. If yes page load else you are routed to sign in page.|
+| View Read a Blog | Click on Read a Blog | No validation required. All blogs are loaded and random quotes are displayed.|
 
-        python manage.py db init
+## Prerequiites
+    - Python 3.6 required
 
-# create a migration
+## Application link
+Here is a live working link 
 
-        python manage.py db migrate -m "initial migration"
+## Set-up and Installation
+    - Install python 3.6
+    - Run chmod a+x start.py
+    - Run ./start.py
 
-# upgrade
+    Incase you need to access / improve the application please follow the below steps
+    1.  Use this command $ git clone <https://github.com/CarineIzere/pers-blog>
+        This will clone the projects repository into a local folder on your device.
+    2.  Open the files with an editor( preferably Atom. )
+    3.  Study the code. learn from it. Improve on it.
 
-        python manage.py db upgrade
-
-### Cloning
-
-        \_In your terminal:
-
-        \_\$ git clone https://github.com/CarineIzere/pitches.
-
-        \*\$ cd Pitch
+## Known bugs
+No known errors.
 
 ## Technologies used
-
-        - Python 3.6
-        - Flask Framework
-        - HTML, CSS and Bootstrap
-        - JavaScript
-        - Git
-        - Postgres db
-
-## License
-
-      [![License: MIT]
-
-## copyright
-
-      ©2019 [Carine Izere]
+    - Python 3.6
+    - HTML
+    - Bootstrap
 
 ## Support and contact details
+In case of any problems reach me through my email:carizeree@gmail.com
 
-      tel:+250783706421 E_mail : carizeree@gmail.com
-
-## Bugs
-
-      No bugs have been identified as far but incase of any contact author
-
-## Contribution
-
-      pull requests are encouraged
-
-## Acknowledge
-
-      It will be a great pressure for anyone will use my code.
+### License
+Copyright (c) {2019} **{carineIzere}**
+Permission is hereby granted, free of charge, to any person willing to obtain a copy of this program for personal use. However if the program will be used for commercial gain then a royalty fee will have to be paid to the author of the program.
